@@ -40,7 +40,7 @@ def generate_random_img(path=None):
     Generates a random 5x5x5x5 image and exports it into the desired file.
     :param path: The filepath. A file with the same path will be overwritten.
                  If path is None a file will be generated in the root directory.
-    :return: Returns nothing.
+    :return: A numpy 4D array with the generated image.
     """
     if path is None:
         path = os.path.join(settings.BASE_DIR, "4d_img.txt")
@@ -51,6 +51,7 @@ def generate_random_img(path=None):
     """
     img = np.random.randint(2, size=(5, 5, 5, 5), dtype=np.int8)
     export_image(img, path)
+    return img
 
 
 def load_image(path):
