@@ -1,10 +1,5 @@
-
-import pdb
-
 max_pair = 0
 max_odd = 0
-a = 0
-b = 0
 d3_cells = list()
 d2_cells = list()
 d1_cells = list()
@@ -184,11 +179,14 @@ def is_adyacent(tuple1, tuple2):
 
 
 def get_from_matrix(tuple, matrix):
-    i, j, k, l = (tuple[0] / 2) - 1, (tuple[1] / 2) -1, (tuple[2] / 2) - 1, (tuple[3] / 2) - 1
+    i, j, k, l = (int((tuple[0] / 2) - 1), int((tuple[1] / 2) - 1),
+                  int((tuple[2] / 2) - 1), int((tuple[3] / 2) - 1))
     return matrix[i][j][k][l] == 1
 
+
 def get_m43(size, matrix):
-    global d3_cells, a, b
+    global d3_cells
+    i, j = 0, 0
     res = list()
 
     tuple_4d = generate_4d_indices(size)
@@ -196,12 +194,13 @@ def get_m43(size, matrix):
 
     for x in tuple_4d:
         if get_from_matrix(x, matrix):
+            j = 0
             for y in tuple_3d:
                 if is_adyacent(x, y):
                     d3_cells.append(y)
-                    res.append((a, b))
-                b += 1
-        a += 1
+                    res.append((i, j))
+                j += 1
+        i += 1
+        tuple_3d = generate_3d_indices(size)
 
-    print d3_cells
     return res
