@@ -1,6 +1,9 @@
 if __name__ == "__main__":
 
     import numpy
+    import compressor
+    import image_tools
 
-    matrix = numpy.random.randint(2, size=(4, 4, 4, 4))
-    print matrix;
+    matrix = image_tools.load_image("test.txt")
+
+    compressor.get_m43(5,matrix)
