@@ -1,12 +1,11 @@
+# encoding: utf-8
 import sys
+import image_tools
 
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QApplication, QGridLayout, QLabel, QAction, qApp,
                              QFileDialog, QPushButton, QMainWindow,
                              QWidget, QSpinBox)
-
-from src import image_tools
-
 
 class App(QMainWindow):
     def __init__(self):
@@ -35,8 +34,7 @@ class App(QMainWindow):
         main_widget.setLayout(grid)
 
         # Random matrix generation widgets #
-        random_label = QLabel("Crea una imagen 4D aleatoria simétrica " +
-                              "con el siguiente tamaño:")
+        random_label = QLabel("Crea una imagen 4D aleatoria simétrica con el siguiente tamaño:")
         self.dim_input = QSpinBox()
         self.dim_input.setRange(1, 10)
         random_btn = QPushButton("Generar matriz", main_widget)

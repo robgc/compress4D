@@ -3,7 +3,7 @@ max_odd = 0
 d3_cells = list()
 d2_cells = list()
 d1_cells = list()
-
+d0_cells = list()
 
 def is_max(n):
     return n == max_pair or n == max_odd
@@ -202,5 +202,65 @@ def get_m43(size, matrix):
                 j += 1
         i += 1
         tuple_3d = generate_3d_indices(size)
+
+    return res
+
+def get_m32(size, matrix):
+    global d3_cells, d2_cells
+    i, j = 0, 0
+    res = list()
+
+    tuple_3d = d3_cells
+    tuple_2d = generate_2d_indices(size)
+
+    for x in tuple_3d:
+        j = 0
+        for y in tuple_2d:
+            if is_adyacent(x, y):
+                d2_cells.append(y)
+                res.append((i, j))
+            j += 1
+        i += 1
+        tuple_2d = generate_2d_indices(size)
+
+    return res
+
+def get_m21(size, matrix):
+    global d2_cells, d1_cells
+    i, j = 0, 0
+    res = list()
+
+    tuple_2d = d2_cells
+    tuple_1d = generate_1d_indices(size)
+
+    for x in tuple_2d:
+        j = 0
+        for y in tuple_1d:
+            if is_adyacent(x, y):
+                d1_cells.append(y)
+                res.append((i, j))
+            j += 1
+        i += 1
+        tuple_1d = generate_1d_indices(size)
+
+    return res
+
+def get_m10(size, matrix):
+    global d1_cells, d0_cells
+    i, j = 0, 0
+    res = list()
+
+    tuple_1d = d1_cells
+    tuple_0d = generate_0d_indices(size)
+
+    for x in tuple_1d:
+        j = 0
+        for y in tuple_0d:
+            if is_adyacent(x, y):
+                d0_cells.append(y)
+                res.append((i, j))
+            j += 1
+        i += 1
+    tuple_0d = generate_0d_indices(size)
 
     return res

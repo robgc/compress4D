@@ -3,7 +3,7 @@ import re
 
 import numpy as np
 
-from . import settings
+import settings
 
 
 def export_image(image, path):
