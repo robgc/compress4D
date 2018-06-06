@@ -5,6 +5,7 @@ d2_cells = list()
 d1_cells = list()
 d0_cells = list()
 
+
 def is_max(n):
     return n == max_pair or n == max_odd
 
@@ -205,6 +206,7 @@ def get_m43(size, matrix):
 
     return res
 
+
 def get_m32(size, matrix):
     global d3_cells, d2_cells
     i, j = 0, 0
@@ -224,6 +226,7 @@ def get_m32(size, matrix):
         tuple_2d = generate_2d_indices(size)
 
     return res
+
 
 def get_m21(size, matrix):
     global d2_cells, d1_cells
@@ -245,6 +248,7 @@ def get_m21(size, matrix):
 
     return res
 
+
 def get_m10(size, matrix):
     global d1_cells, d0_cells
     i, j = 0, 0
@@ -264,3 +268,33 @@ def get_m10(size, matrix):
     tuple_0d = generate_0d_indices(size)
 
     return res
+
+
+def test_list(tuple1, tuple2):
+    a1, a2, b1, b2 = 0,0,0,0
+    test = False
+    for x in tuple1:
+        a1, b1 = x[0], x[1]
+        for y in tuple2:
+            a2, b2 = y[0], y[1]
+            if(a1 == b2 or a2 == b1):
+                test = True
+                break
+    return test
+
+def csr(size, matrix):
+    m43 = list()
+    m32 = list()
+    m21 = list()
+    m10 = list()
+
+    m43 = get_m43(size, matrix)
+    print "m43 done"
+    m32 = get_m32(size, matrix)
+    print "m32 done"
+    m21 = get_m21(size, matrix)
+    print "m21 done"
+    m10 = get_m10(size, matrix)
+    print "m10 done"
+
+    print test_list(m43, m32)
