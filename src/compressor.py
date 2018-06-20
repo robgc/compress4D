@@ -272,14 +272,20 @@ def get_m10(size, matrix):
 
 def test_list(tuple1, tuple2):
     a1, a2, b1, b2 = 0,0,0,0
-    test = False
+    count1, count2 = 0,0
+    test = False;
     for x in tuple1:
         a1, b1 = x[0], x[1]
+        count1, count2 = 0,0
         for y in tuple2:
             a2, b2 = y[0], y[1]
-            if(a1 == b2 or a2 == b1):
-                test = True
-                break
+            if(a1 == b2):
+                count1 += 1
+            if(a2 == b1):
+                count2 += 1
+        if ( count1 > 1 or count2 >1):
+            test = True
+            break
     return test
 
 def csr(size, matrix):
