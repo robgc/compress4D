@@ -288,19 +288,11 @@ def test_list(tuple1, tuple2):
             break
     return test
 
+
 def csr(size, matrix):
-    m43 = list()
-    m32 = list()
-    m21 = list()
-    m10 = list()
-
     m43 = get_m43(size, matrix)
-    print "m43 done"
     m32 = get_m32(size, matrix)
-    print "m32 done"
     m21 = get_m21(size, matrix)
-    print "m21 done"
     m10 = get_m10(size, matrix)
-    print "m10 done"
 
-    print test_list(m43, m32)
+    return m43, m32, m21, m10

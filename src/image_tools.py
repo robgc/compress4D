@@ -35,9 +35,11 @@ def export_image(image, path):
                 f.write("# New slice \n")
 
 
-def generate_random_img(path=None):
+def generate_random_img(shape=5, path=None):
     """
-    Generates a random 5x5x5x5 image and exports it into the desired file.
+    Generates a random shapeXshapeXshapeXshape image and exports it into the
+    desired file.
+    :param shape: The desired shape size
     :param path: The filepath. A file with the same path will be overwritten.
                  If path is None a file will be generated in the root directory.
     :return: A numpy 4D array with the generated image.
@@ -49,7 +51,7 @@ def generate_random_img(path=None):
     4D array generation. We create a 5x5x5x5 binary image, we also
     use the less memory hungry version of the integer type.
     """
-    img = np.random.randint(2, size=(5, 5, 5, 5), dtype=np.int8)
+    img = np.random.randint(2, size=(shape,) * 4, dtype=np.int8)
     export_image(img, path)
     return img
 
@@ -98,4 +100,4 @@ def load_image(path):
     # Apply the shape
     image = image.reshape(shape)
 
-    return image
+    return shape[0], image
